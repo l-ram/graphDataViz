@@ -50,4 +50,25 @@ const bfs = (start: string) => {
   }
 };
 
-bfs("PHX");
+// bfs("PHX");
+
+const dfs = (start: string, visited = new Set()) => {
+  console.log(start);
+  visited.add(start);
+
+  const destinations = adjacencyList.get(start);
+
+  for (const destination of destinations) {
+    let steps = visited.has.length;
+    if (destination === "BKK") {
+      console.log(`DFS found Bangkok ${steps} in steps`);
+      return;
+    }
+
+    if (!visited.has(destination)) {
+      dfs(destination, visited);
+    }
+  }
+};
+
+dfs("PHX");
